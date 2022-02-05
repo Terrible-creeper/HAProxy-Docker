@@ -1,4 +1,4 @@
-name: build nginx
+name: build
 on:
   workflow_dispatch:
   schedule:
@@ -10,7 +10,7 @@ on:
       - main
 jobs:
   push:
-    name: "haproxy:${{ matrix.tag }}"
+    name: "haproxydocker:${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -35,4 +35,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/terrible-creeper/haproxy:${{ matrix.tag }}
+          tags: ghcr.io/terrible-creeper/haproxydocker:${{ matrix.tag }}
